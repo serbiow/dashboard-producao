@@ -96,6 +96,33 @@ button:hover {
   justify-content: flex-end;
 }
 
+.total-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.total-label {
+  font-weight: 700;
+  color: #2563eb;
+  font-size: 1.1rem;
+}
+
+.total-input {
+  background: #e0e7ef;
+  font-weight: 700;
+  color: #2563eb;
+  border: none;
+  width: 100px;
+  text-align: right;
+  cursor: not-allowed;
+  font-size: 1.1rem;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
 @media (max-width: 600px) {
   .dashboard-container {
     padding: 16px 4vw;

@@ -27,9 +27,9 @@ export default function Dashboard() {
         setForm({ ...form, producao: novaProducao });
     };
 
-    const gerarDoc = async () => {
-        const total = form.producao.reduce((acc, val) => acc + (parseInt(val) || 0), 0);
+    const total = form.producao.reduce((acc, val) => acc + (parseInt(val) || 0), 0);
 
+    const gerarDoc = async () => {
         // gerar imagem do gráfico
         const chartDataUrl = await htmlToImage.toPng(chartRef.current);
         const chartBlob = await (await fetch(chartDataUrl)).blob();
@@ -61,9 +61,10 @@ export default function Dashboard() {
                                     ],
                                 })
                             ),
+                            // Adiciona o total geral na tabela do documento
                             new TableRow({
                                 children: [
-                                    new TableCell({ children: [new Paragraph("Total Geral:")] }),
+                                    new TableCell({ children: [new Paragraph("Total Geral:")], columnSpan: 1 }),
                                     new TableCell({ children: [new Paragraph(`${total}`)] }),
                                 ],
                             }),
@@ -129,6 +130,16 @@ export default function Dashboard() {
                         />
                     </div>
                 ))}
+            </div>
+            <div className="total-row">
+                <label className="total-label">Total:</label>
+                <input
+                    type="number"
+                    value={total}
+                    readOnly
+                    className="total-input"
+                    tabIndex={-1}
+                />
             </div>
 
             <h2>Observações</h2>
